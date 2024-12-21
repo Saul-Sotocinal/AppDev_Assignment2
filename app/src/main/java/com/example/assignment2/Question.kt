@@ -19,14 +19,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 
+/**
+ * Composable Screen Displaying a multiple choice question.
+ * @param question Question object to display.
+ * @param onSubmitClicked Function to call when submit button is clicked.
+ */
 @Composable
-fun questionScreen(question: Question, onSubmitClicked: (Boolean) -> Unit): Boolean {
+fun QuestionScreen(question: Question, onSubmitClicked: (Boolean) -> Unit): Unit {
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(question.choices[0]) }
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        // Displaying question
         Text(text = question.question)
+
+        // Displaying all choices
         question.choices.forEach{ text ->
             Row(
                 Modifier
@@ -51,10 +59,11 @@ fun questionScreen(question: Question, onSubmitClicked: (Boolean) -> Unit): Bool
                 )
             }
         }
+
+        // Validating Answer
         val isCorrectAnswer = selectedOption == question.answer
         Button(onClick = { onSubmitClicked(isCorrectAnswer) }) {
             Text(text = "Submit")
         }
     }
-    return true
 }

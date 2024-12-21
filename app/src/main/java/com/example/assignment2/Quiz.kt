@@ -6,6 +6,7 @@ data class Question (
     val answer: String
 )
 
+// Questions for math quiz
 fun GetMathQuiz(): List<Question> {
     return listOf(
         Question("2 + 2", listOf("1", "2", "3", "4",),"4"),
@@ -17,6 +18,7 @@ fun GetMathQuiz(): List<Question> {
     )
 }
 
+// Questions for Hex color code quiz
 fun GetHexColorsQuiz(): List<Question> {
     return listOf(
         Question("What color does #0000ff make?", listOf("Red", "Blue", "Green", "Black",),"Blue"),

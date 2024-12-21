@@ -35,7 +35,7 @@ import com.example.assignment2.GetMathQuiz
 import com.example.assignment2.Question
 import com.example.assignment2.R
 import com.example.assignment2.ResultsScreen
-import com.example.assignment2.questionScreen
+import com.example.assignment2.QuestionScreen
 
 enum class QuizScreen(@StringRes val title: Int) {
     LoginScreen(title = R.string.login_screen),
@@ -45,6 +45,10 @@ enum class QuizScreen(@StringRes val title: Int) {
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
+
+/**
+ * Composable function to display at top of app. Provides backwards page navigation.
+ */
 @Composable
 fun AppBar(
     currentScreen: QuizScreen,
@@ -83,6 +87,7 @@ fun AppBar(
     )
 }
 
+// The app's page navigater.
 @Composable
 fun QuizApp(
     navController: NavHostController = rememberNavController(),
@@ -120,7 +125,7 @@ fun QuizApp(
         ) {
             composable(route = QuizScreen.LoginScreen.name) {
                 LoginScreen(userRepository, {username, password ->
-                    if (userRepository.ValidateCredential(username, password) || true)
+                    if (userRepository.ValidateCredential(username, password))
                         navController.navigate(QuizScreen.QuizStartScreen.name)
                     else
                         return@LoginScreen "Incorrect username or password!"
@@ -138,7 +143,7 @@ fun QuizApp(
                 })
             }
             composable(route = QuizScreen.QuestionScreen.name) {
-                questionScreen(questions.get(currentQuestion), { isCorrectAnswer ->
+                QuestionScreen(questions.get(currentQuestion), { isCorrectAnswer ->
                     if (isCorrectAnswer)
                         correctAnswersCount += 1
                     currentQuestion += 1

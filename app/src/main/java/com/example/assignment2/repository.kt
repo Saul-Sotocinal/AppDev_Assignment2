@@ -37,6 +37,9 @@ class UserSource(private val client: OkHttpClient = appHttpClient) {
     }
 }
 
+/**
+ * Repository of user information provided by Random API.
+ */
 class UserRepository {
     private val Source: UserSource = UserSource()
     init {

@@ -7,6 +7,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 
+/**
+ * Composable Screen displaying quiz results.
+ * @param correctAnswersCount The number of question answered correctly.
+ * @param quizSize The number of questions.
+ */
 @Composable
 fun ResultsScreen(correctAnswersCount: Int, quizSize: Int) {
     Column(

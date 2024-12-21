@@ -7,6 +7,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 
+/**
+ * Composable screen detailing app's purpose. Allows you to start 1 of 2 quizzes.
+ * @param onStartMathQuizClicked function called when start math quiz button is clicked.
+ * @param onStartColorQuizClicked function called when start hex color quiz button is clicked.
+ */
 @Composable
 fun QuizStartScreen(
     onStartMathQuizClicked: () -> Unit,
