@@ -4,4 +4,5 @@
     <string name="login_screen">login</string>
     <string name="quiz_start_screen">quiz start</string>
     <string name="question_screen">question</string>
+    <string name="results_screen">results</string>
 </resources>
