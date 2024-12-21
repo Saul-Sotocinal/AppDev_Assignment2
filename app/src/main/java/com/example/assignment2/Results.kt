@@ -15,9 +15,9 @@ fun ResultsScreen(correctAnswersCount: Int, quizSize: Int) {
     ) {
         Text(text = "RESULTS")
         Text(text = "${correctAnswersCount}/${quizSize}")
-        val message: String = if (correctAnswersCount / quizSize >= 0.6f)
+        val message: String = if (correctAnswersCount / quizSize >= 1.0f)
+            "Perfect Score!" else if (correctAnswersCount / quizSize >= 0.6f)
             "Congrats! That's a passing grade." else "Better luck next time..."
         Text(text = message)
-        Log.d("Rendered", "jhgbjr")
     }
 }

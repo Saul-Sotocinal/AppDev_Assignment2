@@ -138,19 +138,18 @@ fun QuizApp(
                 })
             }
             composable(route = QuizScreen.QuestionScreen.name) {
-                if (currentQuestion < questions.size) {
-                    questionScreen(questions.get(currentQuestion), { isCorrectAnswer ->
-                        if (isCorrectAnswer)
-                            correctAnswersCount += 1
-                        currentQuestion += 1
+                questionScreen(questions.get(currentQuestion), { isCorrectAnswer ->
+                    if (isCorrectAnswer)
+                        correctAnswersCount += 1
+                    currentQuestion += 1
+                    if (currentQuestion < questions.size - 1)
                         navController.navigate(QuizScreen.QuestionScreen.name)
-                    })
-                }
-                else
-                    navController.navigate(QuizScreen.ResultsScreen.name)
+                    else
+                        navController.navigate(QuizScreen.ResultsScreen.name)
+                })
             }
             composable(route = QuizScreen.ResultsScreen.name) {
-                ResultsScreen(5, 5)
+                ResultsScreen(correctAnswersCount, questions.size - 1)
             }
         }
     }
