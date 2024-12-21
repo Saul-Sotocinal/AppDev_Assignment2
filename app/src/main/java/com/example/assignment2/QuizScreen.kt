@@ -34,6 +34,7 @@ import com.example.assignment2.GetHexColorsQuiz
 import com.example.assignment2.GetMathQuiz
 import com.example.assignment2.Question
 import com.example.assignment2.R
+import com.example.assignment2.ResultsScreen
 import com.example.assignment2.questionScreen
 
 enum class QuizScreen(@StringRes val title: Int) {
@@ -64,7 +65,8 @@ fun AppBar(
         navigationIcon = {
             if (canNavigateBack) {
                 IconButton (onClick = {
-                    if (currentScreen == QuizScreen.QuestionScreen)
+                    if (currentScreen == QuizScreen.QuestionScreen ||
+                        currentScreen == QuizScreen.ResultsScreen )
                         navigateHome()
                     else
                         navigateUp()
@@ -148,7 +150,7 @@ fun QuizApp(
                     navController.navigate(QuizScreen.ResultsScreen.name)
             }
             composable(route = QuizScreen.ResultsScreen.name) {
-
+                ResultsScreen(5, 5)
             }
         }
     }
